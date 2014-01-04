@@ -1,0 +1,26 @@
+.food-table {
+	border: 1px solid black;
+}
+img.foodpic, .profilepic {
+	width:150px;
+}
+iframe {
+	display:none;
+}
+
+th {
+	background-color: #104241; 
+	color: #999999;
+}
+
+.profile-info {
+	border: none;
+}
+
+table, button, div {
+	margin-left:20px;
+}
+
+.container, .navbar, .navbar-inverse, .navbar-header, .collapse, .navbar-collapse {
+	margin-left:none;
+}
