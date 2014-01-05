@@ -5,13 +5,14 @@ if(isset($_COOKIE['session_id']) or $_COOKIE['session_id']==md5($_SESSION['usern
     exit();
 	}
 
-if(isset($_GET['code'])) {	
+if(isset($_GET['code'])) {
 	$url = "https://api.instagram.com/oauth/access_token";
 	$post_params = array (
 		"client_id"=>"54727895fca64a7e877e9dc197c0ec29",
 		"client_secret"=>"f2dd121893c24d8291795bd82e10d7c3",
 		"grant_type"=>"authorization_code",
 		"redirect_uri"=>"http://54.200.197.190/dietitian_login.php",
+        "scope"=> array('likes', 'comments'),
 		"code"=>$_GET['code']
 	);
 	$ch = curl_init($url);
@@ -28,12 +29,12 @@ if(isset($_GET['code'])) {
 		setcookie('session_id',$auth_cookie_val, 0, '/', '54.200.197.190',false);
 		$dbconn =  pg_connect("host=healthybytes.cwy4vi0q7lmp.us-east-1.rds.amazonaws.com port=5432 dbname=healthybytesdb user=healthybytes password=abcd1234");
 		$new_dietitian_query = pg_query("INSERT INTO dietitians (username, full_name, profile_picture) values ('".$response->user->username."','".$response->user->full_name."','".$response->user->profile_picture."')");
-		if(!$new_dietitian_query) {$new_dietitian_query = pg_query("update dietitians set username = '".$response->user->username."', full_name = '".$response->user->full_name."', profile_picture = '".$response->user->profile_picture."' where username = '".$response->user->username."'");} 
+		if(!$new_dietitian_query) {$new_dietitian_query = pg_query("update dietitians set username = '".$response->user->username."', full_name = '".$response->user->full_name."', profile_picture = '".$response->user->profile_picture."' where username = '".$response->user->username."'");}
 		header("Location: /dietitian.php");
 		exit();
 	}
 
-	else { 
+	else {
 		header("Location: /dietitian_login.php");
 		exit();
 	}

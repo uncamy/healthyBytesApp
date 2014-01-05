@@ -12,8 +12,7 @@ if(isset($_GET['code'])) {
 		"client_secret"=>"3efb9193b7e049aa9b910c2773d1294c",
 		"grant_type"=>"authorization_code",
 		"redirect_uri"=>"http://54.200.197.190/login.php",
-        "scope"=>"likes+comments",
-		"code"=>$_GET['code']
+                "code"=>$_GET['code']
 	);
 	$ch = curl_init($url);
 	curl_setopt($ch, CURLOPT_POST, true);
