@@ -5,13 +5,14 @@ if(isset($_COOKIE['session_id']) or $_COOKIE['session_id']==md5($_SESSION['usern
     exit();
 	}
 
-if(isset($_GET['code'])) {	
+if(isset($_GET['code'])) {
 	$url = "https://api.instagram.com/oauth/access_token";
 	$post_params = array (
 		"client_id"=>"b67a5543c0ae4f3287a82e5078f47ae0",
 		"client_secret"=>"3efb9193b7e049aa9b910c2773d1294c",
 		"grant_type"=>"authorization_code",
 		"redirect_uri"=>"http://54.200.197.190/login.php",
+        "scope"=>"likes+comments",
 		"code"=>$_GET['code']
 	);
 	$ch = curl_init($url);
@@ -28,12 +29,12 @@ if(isset($_GET['code'])) {
 		setcookie('session_id',$auth_cookie_val, 0, '/', '54.200.197.190',false);
 		$dbconn =  pg_connect("host=healthybytes.cwy4vi0q7lmp.us-east-1.rds.amazonaws.com port=5432 dbname=healthybytesdb user=healthybytes password=abcd1234");
 		$new_customer_query = pg_query("INSERT INTO customers (username, full_name, profile_picture) values ('".$response->user->username."','".$response->user->full_name."','".$response->user->profile_picture."')");
-		if(!$new_customer_query) {$new_customer_query = pg_query("update customers set username = '".$response->user->username."', full_name = '".$response->user->full_name."', profile_picture = '".$response->user->profile_picture."' where username = '".$response->user->username."'");} 
+		if(!$new_customer_query) {$new_customer_query = pg_query("update customers set username = '".$response->user->username."', full_name = '".$response->user->full_name."', profile_picture = '".$response->user->profile_picture."' where username = '".$response->user->username."'");}
 		header("Location: /customer.php");
 		exit();
 	}
 
-	else { 
+	else {
 		header("Location: /login.php");
 		exit();
 	}
