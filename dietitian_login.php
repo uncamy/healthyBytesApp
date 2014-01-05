@@ -12,7 +12,7 @@ if(isset($_GET['code'])) {
 		"client_secret"=>"f2dd121893c24d8291795bd82e10d7c3",
 		"grant_type"=>"authorization_code",
 		"redirect_uri"=>"http://54.200.197.190/dietitian_login.php",
-        "scope"=> array('likes', 'comments'),
+                "scope"=> array('likes', 'comments'),
 		"code"=>$_GET['code']
 	);
 	$ch = curl_init($url);
