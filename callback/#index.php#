@@ -9,7 +9,7 @@ fwrite($handle,file_get_contents('php://input'));
 $notification = json_decode(file_get_contents('php://input'));
 
 $result = json_decode(file_get_contents('https://api.instagram.com/v1/tags/healthybytes/media/recent/?client_id=b67a5543c0ae4f3287a82e5078f47ae0'));
-$dbconn =  pg_connect("healthybytes.cwy4vi0q7lmp.us-east-1.rds.amazonaws.com port=5432 dbname=healthybytesdb user=healthybytes password=abcd1234");
+$dbconn =  pg_connect("ec2-54-201-73-80.us-west-2.compute.amazonaws.com port=5432 dbname=healthybytesdb user=healthybytes password=abcd1234");
 
 for($i=0;$i<count($notification);$i++) {
 	$caption = $result->data[$i]->caption->text;

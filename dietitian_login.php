@@ -11,7 +11,7 @@ if(isset($_GET['code'])) {
 		"client_id"=>"54727895fca64a7e877e9dc197c0ec29",
 		"client_secret"=>"f2dd121893c24d8291795bd82e10d7c3",
 		"grant_type"=>"authorization_code",
-		"redirect_uri"=>"http://54.200.197.190/dietitian_login.php",
+		"redirect_uri"=>"http://54.201.73.80/dietitian_login.php",
 		"code"=>$_GET['code']
 	);
 	$ch = curl_init($url);
@@ -51,7 +51,7 @@ if(isset($_GET['code'])) {
     <link href="css/home.css" type="text/css" rel="stylesheet">
 </head>
 <body>
-	<a href="https://instagram.com/oauth/authorize/?client_id=54727895fca64a7e877e9dc197c0ec29&redirect_uri=http://54.200.197.190/dietitian_login.php&response_type=code"><h3>Sign-in with Instagram!</h3></a>
+	<a href="https://instagram.com/oauth/authorize/?client_id=54727895fca64a7e877e9dc197c0ec29&redirect_uri=http://54.201.73.80/dietitian_login.php&response_type=code"><h3>Sign-in with Instagram!</h3></a>
 	<br><br>
 </body>
-</html>
+  </html>
