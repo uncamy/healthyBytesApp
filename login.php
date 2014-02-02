@@ -11,7 +11,7 @@ if(isset($_GET['code'])) {
 		"client_id"=>"b67a5543c0ae4f3287a82e5078f47ae0",
 		"client_secret"=>"3efb9193b7e049aa9b910c2773d1294c",
 		"grant_type"=>"authorization_code",
-		"redirect_uri"=>"http://54.201.73.80/login.php",
+		"redirect_uri"=>"http://54.213.45.76/login.php",
 		"code"=>$_GET['code']
 	);
 	$ch = curl_init($url);
